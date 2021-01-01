@@ -26,5 +26,10 @@
             <artifactId>commons-io</artifactId>
             <version>2.5</version> <!-- Using original dependency version -->
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version> <!-- Using original dependency version -->
+        </dependency>
     </dependencies>
 </project>
