@@ -1,16 +1,14 @@
-// created by Katharine Chui
+package src.main.java.org.waito;// created by Katharine Chui
 // https://github.com/Kethen
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.sql.Types;
+
 import com.whatsapp.MediaData;
 import java.io.*;
-import java.util.Arrays;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
+
 public class Migrator{
 	public Migrator(W2ALogInterface log){
 		this.log = log;
@@ -59,7 +57,7 @@ public class Migrator{
 				log.println("failed opening android database");
 				return false;
 			}
-			
+
 		}catch(Exception ex){
 			log.println("failed opening android database");
 			log.println(ex.getMessage());
@@ -128,7 +126,7 @@ public class Migrator{
 				log.println("database file " + path + " exists!");
 				return false;
 			}
-			InputStream dbTemplate = this.getClass().getClassLoader().getResourceAsStream("template.db");
+			InputStream dbTemplate = this.getClass().getClassLoader().getResourceAsStream("src/main/resources/template.db");
 			FileOutputStream outFile = new FileOutputStream(path);
 			BufferedOutputStream bufferedOutFile = new BufferedOutputStream(outFile);
 			byte[] copyBuffer = new byte[1024];
@@ -157,7 +155,7 @@ public class Migrator{
 			return false;
 		}
 		// first work with chat list
-		try{	
+		try{
 			Statement sql = iphone.createStatement();
 			ResultSet result = sql.executeQuery("SELECT COUNT(Z_PK) AS number FROM ZWACHATSESSION");
 			result.next();

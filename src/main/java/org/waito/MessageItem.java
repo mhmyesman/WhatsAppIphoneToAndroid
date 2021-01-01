@@ -1,4 +1,4 @@
-// created by Katharine Chui
+package src.main.java.org.waito;// created by Katharine Chui
 // https://github.com/Kethen
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -218,7 +218,7 @@ public class MessageItem{ // messages <- ZWAMESSAGE
 			}else{
 				if(mediaWaType == 1 || mediaWaType == 2){
 					// give a dummy thumbnail to images and videos
-					InputStream inputFile = this.getClass().getClassLoader().getResourceAsStream("dummy.jpg");
+					InputStream inputFile = this.getClass().getClassLoader().getResourceAsStream("src/main/resources/dummy.jpg");
 					ByteArrayOutputStream inputFileBuffer = new ByteArrayOutputStream();
 					while((copySize = inputFile.read(copyBuffer, 0, 1024)) != -1){
 						inputFileBuffer.write(copyBuffer, 0, copySize);
@@ -326,7 +326,7 @@ public class MessageItem{ // messages <- ZWAMESSAGE
 												}
 											}
 											// need to clone media it seems
-											/*quotedMessage = new MessageItem();
+											/*quotedMessage = new src.main.java.org.waito.MessageItem();
 											if(!quotedMessage.cloneFromAndroid(android, quotedMessageKeyId)){
 												quotedMessage = null;
 											}*/

@@ -47,26 +47,26 @@ whatsappi2a.jar : MANIFEST.MF prepackage template.db dummy.jpg
 	cp -f dummy.jpg build/
 	cp -rf com build/
 	cp W2ALogInterface.class build/
-	cp ChatListItem.class build/
-	cp MessageItem.class build/
-	cp Migrator.class build/
+	cp src.main.java.org.waito.ChatListItem.class build/
+	cp src.main.java.org.waito.MessageItem.class build/
+	cp src.main.java.org.waito.Migrator.class build/
 	cd build; jar -cmf ../MANIFEST.MF ../whatsappi2a.jar *; cd ../; rm -r build
 
 MANIFEST.MF: 
 	echo Manifest-Version: 1.0 >> MANIFEST.MF
 	echo Created-By: Bundle >> MANIFEST.MF
-	echo Main-Class: Migrator >> MANIFEST.MF
+	echo Main-Class: src.main.java.org.waito.Migrator >> MANIFEST.MF
 
-prepackage: Migrator.class MessageItem.class ChatListItem.class com/whatsapp/MediaData.class
+prepackage: src.main.java.org.waito.Migrator.class src.main.java.org.waito.MessageItem.class src.main.java.org.waito.ChatListItem.class com/whatsapp/MediaData.class
 
-Migrator.class : com/whatsapp/MediaData.class Migrator.java MessageItem.class ChatListItem.class W2ALogInterface.class sqlite
-	javac -classpath $(CLASS_PATH)  Migrator.java
+src.main.java.org.waito.Migrator.class : com/whatsapp/MediaData.class src.main.java.org.waito.Migrator.java src.main.java.org.waito.MessageItem.class src.main.java.org.waito.ChatListItem.class W2ALogInterface.class sqlite
+	javac -classpath $(CLASS_PATH)  src.main.java.org.waito.Migrator.java
 
-MessageItem.class : com/whatsapp/MediaData.class W2ALogInterface.class MessageItem.java sqlite bplist
-	javac -classpath $(CLASS_PATH) MessageItem.java
+src.main.java.org.waito.MessageItem.class : com/whatsapp/MediaData.class W2ALogInterface.class src.main.java.org.waito.MessageItem.java sqlite bplist
+	javac -classpath $(CLASS_PATH) src.main.java.org.waito.MessageItem.java
 
-ChatListItem.class : com/whatsapp/MediaData.class W2ALogInterface.class ChatListItem.java sqlite
-	javac -classpath $(CLASS_PATH) ChatListItem.java
+src.main.java.org.waito.ChatListItem.class : com/whatsapp/MediaData.class W2ALogInterface.class src.main.java.org.waito.ChatListItem.java sqlite
+	javac -classpath $(CLASS_PATH) src.main.java.org.waito.ChatListItem.java
 
 W2ALogInterface.class : W2ALogInterface.java
 	javac -classpath $(CLASS_PATH) W2ALogInterface.java
@@ -75,7 +75,7 @@ com/whatsapp/MediaData.class : com/whatsapp/MediaData.java
 	javac com/whatsapp/MediaData.java
 
 clean :
-	rm -rf -- W2ALogInterface.class Migrator.class ChatListItem.class MessageItem.class com/whatsapp/MediaData.class whatsappi2a.jar $(SQLITE_PATH) sqlite  $(BPLIST_CLASS) bplist $(COMMONS_CLASS) commons $(SLF4J_CLASS) $(SLF4J_NOP_CLASS) slf4j
+	rm -rf -- W2ALogInterface.class src.main.java.org.waito.Migrator.class src.main.java.org.waito.ChatListItem.class src.main.java.org.waito.MessageItem.class com/whatsapp/MediaData.class whatsappi2a.jar $(SQLITE_PATH) sqlite  $(BPLIST_CLASS) bplist $(COMMONS_CLASS) commons $(SLF4J_CLASS) $(SLF4J_NOP_CLASS) slf4j
 
 %.class : %.java
 	javac -classpath $(CLASS_PATH) $<

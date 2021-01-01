@@ -1,4 +1,4 @@
-// created by Katharine Chui
+package src.main.java.org.waito;// created by Katharine Chui
 // https://github.com/Kethen
 import java.sql.Connection;
 import java.sql.DriverManager;
